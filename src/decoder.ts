@@ -18,13 +18,30 @@ function decode(scVal: StellarSdk.xdr.ScVal): unknown {
 }
 
 /**
- * Decode an Address ScVal to a Stellar/contract address string (G... or C...).
+ * Decode an Address ScVal to a base address plus, for muxed contracts, the muxed id.
  * Returns null if the ScVal is not an address type.
  */
-function decodeAddress(scVal: StellarSdk.xdr.ScVal): string | null {
+interface DecodedAddress {
+  address: string;          // G... or C... (base contract for muxed)
+  muxedId: string | null;   // uint64 as a string, only for muxed contracts
+}
+
+function decodeAddress(scVal: StellarSdk.xdr.ScVal): DecodedAddress | null {
   if (scVal.switch() !== StellarSdk.xdr.ScValType.scvAddress()) return null;
-  const addr = StellarSdk.Address.fromScVal(scVal);
-  return addr.toString();
+
+  const scAddr = scVal.address();
+
+  if (scAddr.switch() === StellarSdk.xdr.ScAddressType.scAddressTypeMuxedContract()) {
+    const muxed = scAddr.muxedContract();
+    return {
+      address: StellarSdk.StrKey.encodeContract(muxed.contractId()),
+      muxedId: muxed.id().toString(), // uint64: never Number()
+    };
+  }
+
+  // Known arms go through the SDK; a genuinely unknown arm still throws here
+  // and takes the existing skip path in parseEvents.
+  return { address: StellarSdk.Address.fromScVal(scVal).toString(), muxedId: null };
 }
 
 /**
