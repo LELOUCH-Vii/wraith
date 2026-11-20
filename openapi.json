@@ -1198,14 +1198,6 @@
                           "eventId": {
                             "type": "string"
                           },
-                          "fromMuxedId": {
-                            "type": "string",
-                            "nullable": true
-                          },
-                          "toMuxedId": {
-                            "type": "string",
-                            "nullable": true
-                          },
                           "direction": {
                             "type": "string",
                             "enum": [
@@ -1556,14 +1548,6 @@
                           "eventId": {
                             "type": "string"
                           },
-                          "fromMuxedId": {
-                            "type": "string",
-                            "nullable": true
-                          },
-                          "toMuxedId": {
-                            "type": "string",
-                            "nullable": true
-                          },
                           "direction": {
                             "type": "string",
                             "enum": [
@@ -1913,14 +1897,6 @@
                           },
                           "eventId": {
                             "type": "string"
-                          },
-                          "fromMuxedId": {
-                            "type": "string",
-                            "nullable": true
-                          },
-                          "toMuxedId": {
-                            "type": "string",
-                            "nullable": true
                           },
                           "direction": {
                             "type": "string",
@@ -2277,14 +2253,6 @@
                           },
                           "eventId": {
                             "type": "string"
-                          },
-                          "fromMuxedId": {
-                            "type": "string",
-                            "nullable": true
-                          },
-                          "toMuxedId": {
-                            "type": "string",
-                            "nullable": true
                           },
                           "direction": {
                             "type": "string",
@@ -3194,14 +3162,6 @@
                           },
                           "eventId": {
                             "type": "string"
-                          },
-                          "fromMuxedId": {
-                            "type": "string",
-                            "nullable": true
-                          },
-                          "toMuxedId": {
-                            "type": "string",
-                            "nullable": true
                           },
                           "direction": {
                             "type": "string",
@@ -6550,9 +6510,6 @@
                     "id": {
                       "type": "string"
                     },
-                    "accessToken": {
-                      "type": "string"
-                    },
                     "walletAddress": {
                       "type": "string",
                       "description": "Deposit address the stablecoin is sent to."
@@ -6594,7 +6551,6 @@
                   },
                   "required": [
                     "id",
-                    "accessToken",
                     "walletAddress",
                     "chain",
                     "coin",
@@ -6617,9 +6573,6 @@
                     "id": {
                       "type": "string"
                     },
-                    "accessToken": {
-                      "type": "string"
-                    },
                     "walletAddress": {
                       "type": "string",
                       "description": "Deposit address the stablecoin is sent to."
@@ -6661,7 +6614,6 @@
                   },
                   "required": [
                     "id",
-                    "accessToken",
                     "walletAddress",
                     "chain",
                     "coin",

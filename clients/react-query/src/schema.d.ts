@@ -661,8 +661,6 @@ export interface paths {
                                 ledgerClosedAt: string;
                                 txHash: string;
                                 eventId: string;
-                                fromMuxedId?: string | null;
-                                toMuxedId?: string | null;
                                 /** @enum {string} */
                                 direction?: "incoming" | "outgoing";
                             }[];
@@ -788,8 +786,6 @@ export interface paths {
                                 ledgerClosedAt: string;
                                 txHash: string;
                                 eventId: string;
-                                fromMuxedId?: string | null;
-                                toMuxedId?: string | null;
                                 /** @enum {string} */
                                 direction?: "incoming" | "outgoing";
                             }[];
@@ -915,8 +911,6 @@ export interface paths {
                                 ledgerClosedAt: string;
                                 txHash: string;
                                 eventId: string;
-                                fromMuxedId?: string | null;
-                                toMuxedId?: string | null;
                                 /** @enum {string} */
                                 direction?: "incoming" | "outgoing";
                             }[];
@@ -1097,8 +1091,6 @@ export interface paths {
                                 ledgerClosedAt: string;
                                 txHash: string;
                                 eventId: string;
-                                fromMuxedId?: string | null;
-                                toMuxedId?: string | null;
                                 /** @enum {string} */
                                 direction?: "incoming" | "outgoing";
                             }[];
@@ -1524,8 +1516,6 @@ export interface paths {
                                 ledgerClosedAt: string;
                                 txHash: string;
                                 eventId: string;
-                                fromMuxedId?: string | null;
-                                toMuxedId?: string | null;
                                 /** @enum {string} */
                                 direction?: "incoming" | "outgoing";
                             }[];
@@ -3482,7 +3472,6 @@ export interface paths {
                     content: {
                         "application/json": {
                             id: string;
-                            accessToken: string;
                             /** @description Deposit address the stablecoin is sent to. */
                             walletAddress: string;
                             chain: string;
@@ -3509,7 +3498,6 @@ export interface paths {
                     content: {
                         "application/json": {
                             id: string;
-                            accessToken: string;
                             /** @description Deposit address the stablecoin is sent to. */
                             walletAddress: string;
                             chain: string;

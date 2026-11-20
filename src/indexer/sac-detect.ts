@@ -37,7 +37,10 @@ const KNOWN_SAC_IDS = new Set<string>([
  * (i.e. the contract is a SAC) rather than uploaded Wasm.
  */
 export function executableIsSac(executable: xdr.ContractExecutable): boolean {
-  return executable.type === "contractExecutableStellarAsset";
+  return (
+    executable.switch().value ===
+    xdr.ContractExecutableType.contractExecutableStellarAsset().value
+  );
 }
 
 /**
@@ -45,10 +48,10 @@ export function executableIsSac(executable: xdr.ContractExecutable): boolean {
  * Returns false for any non-instance value.
  */
 export function instanceValIsSac(val: xdr.ScVal): boolean {
-  if (val.type !== "scvContractInstance") {
+  if (val.switch().value !== xdr.ScValType.scvContractInstance().value) {
     return false;
   }
-  return executableIsSac(val.instance.executable);
+  return executableIsSac(val.instance().executable());
 }
 
 // ─── Instance fetch ───────────────────────────────────────────────────────────
@@ -68,8 +71,7 @@ async function fetchInstanceVal(
       contractId,
       xdr.ScVal.scvLedgerKeyContractInstance(),
     );
-    if (entry.val.type !== "contractData") return null;
-    return entry.val.contractData.val;
+    return entry.val.contractData().val();
   } catch {
     // Missing entry, archived state, or RPC error — treat as "not determinable".
     return null;
